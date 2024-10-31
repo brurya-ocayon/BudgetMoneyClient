@@ -1,0 +1,218 @@
+<div class="row" *ngIf="isPermission && user.id > 0">
+    <div class="col-sm-9"></div>
+    <div class="col-sm-3">
+        נרשם ב : {{user.registerDate | date:"dd/MM/yyyy"}}
+    </div>
+</div>
+
+<h4>{{title}}</h4>
+<form #registerForm="ngForm">
+    <br>
+    <div class="row">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="25" fill="currentColor"
+                        class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+                    </svg>
+                </span>
+            </div>
+            <input type="text" class="form-control" required email [(ngModel)]="user.email" #email="ngModel"
+                name="email" placeholder="דואר אלקטרוני">
+        </div>
+        <div *ngIf="email.errors" class="text-danger">
+            <span *ngIf="email.errors.required">*שדה חובה</span>
+            <span *ngIf="email.errors.email">כתובת דואר אלקטרונית לא תקינה</span>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="25" fill="currentColor"
+                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                </span>
+            </div>
+            <input type="text" class="form-control" required [(ngModel)]="user.firstName" #fName="ngModel" name="fName"
+                placeholder="שם פרטי">
+
+        </div>
+        <div class="text-danger">
+            <span *ngIf="!fName.valid">*שדה חובה</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="25" fill="currentColor"
+                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                </span>
+            </div>
+            <input type="text" class="form-control" required [(ngModel)]="user.lastName" #lName="ngModel" name="lName"
+                placeholder="שם משפחה">
+
+        </div>
+        <div class="text-danger">
+            <span *ngIf="!lName.valid">*שדה חובה</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="25" fill="currentColor"
+                        class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                    </svg>
+                </span>
+            </div>
+            <input type="text" class="form-control" required minlength="9" [(ngModel)]="user.phone" #phone="ngModel"
+                name="phone" placeholder="טלפון">
+        </div>
+        <div *ngIf="phone.errors" class="text-danger">
+            <span *ngIf="phone.errors.required" class="text-danger">*שדה חובה</span>
+            <span *ngIf="phone.errors.minlength" class="text-danger"> מספר טלפון קצר מידי</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="25" fill="currentColor"
+                        class="bi bi-lock-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                    </svg>
+                </span>
+            </div>
+            <input (appOnEnter)="save()"  type="password"  required minlength="6" class="form-control" [(ngModel)]="user.password"
+                #pwd="ngModel" name="pwd" placeholder="סיסמה">
+        </div>
+        <div *ngIf="pwd.errors" class="text-danger">
+            <span *ngIf="pwd.errors.required" class="text-danger">*שדה חובה</span>
+            <span *ngIf="pwd.errors.minlength" class="text-danger"> סיסמה צריכה להכיל לפחות 6
+                תווים</span>
+        </div>
+    </div>
+    <div class="row" *ngIf="isPermission">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" fill="currentColor"
+                        class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                    </svg>
+                </span>
+            </div>
+            <select class="form-control" name="selectUserTypes" [(ngModel)]="user.userType.id"
+                (ngModelChange)="changeUserType($event)">
+                <option selected [ngValue]="0" disabled>בחר סוג משתמש</option>
+                <option *ngFor="let uType of userTypes" [ngValue]="uType.id">{{uType.name}} </option>
+            </select>
+
+        </div>
+        <div class="text-danger">
+            <span *ngIf="user.userType.id==0" class="text-danger">*שדה חובה</span>
+        </div>
+    </div>
+    <div class="row" *ngIf="isPermission &&(user.userType.id==6 ||user.userType.id==2) ">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" fill="currentColor"
+                        class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                    </svg>
+                </span>
+            </div>
+            <select *ngIf="user.userType.id==6" class="form-control" #selecLenders="ngModel" name="selecLenders"
+                [(ngModel)]="user.lender.id" (ngModelChange)="changeLender($event)">
+                <option selected [ngValue]="0" disabled>בחר מלווה</option>
+                <option *ngFor="let lend of lenders" [ngValue]="lend.id">{{lend.name}}</option>
+            </select>
+            <select *ngIf="user.userType.id==2" class="form-control" #selecManager="ngModel" name="selecManager"
+                [(ngModel)]="user.manager.id" (ngModelChange)="changeManager($event)">
+                <option selected [ngValue]="0" disabled>בחר מנהל מלווים</option>
+                <option *ngFor="let manager of managers" [ngValue]="manager.id">{{manager.name}}</option>
+            </select>
+
+        </div>
+        <div class="text-danger">
+            <span *ngIf="(user.lender.id==0&&user.userType.id==6) ||(user.userType.id==2&&user.manager.id==0)"
+                class="text-danger">*שדה חובה</span>
+        </div>
+    </div>
+    <div class="row" *ngIf="isLender">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" fill="currentColor"
+                        class="bi bi-person-standing" viewBox="0 0 16 16">
+                        <path
+                            d="M8 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M6 6.75v8.5a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2.75a.75.75 0 0 0 1.5 0v-2.5a.25.25 0 0 1 .5 0" />
+                    </svg>
+
+                </span>
+            </div>
+
+            <div class="form-control" name="lenderName"> {{currentUser.firstName}} {{currentUser.lastName}}
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="row form-group" *ngIf="isPermission && user.id > 0">
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" [(ngModel)]="user.isActive" #active="ngModel" name="active">משתמש פעיל
+            </label>
+        </div>
+    </div>
+
+    <div class="row form-group" *ngIf="isPermission && user.id > 0">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" [(ngModel)]="user.isYearlyPay" #yearly="ngModel" name="yearly">תשלום שנתי
+            </label>
+        </div>
+    </div>
+    <div class="row form-group" *ngIf="isPermission && user.id > 0">
+        <div class="col-sm-3"><b>תאריך תשלום </b></div>
+        <div class="col-sm-3">
+            <input type="date" class="form-control" [ngModel]="user.payDate | date:'yyyy-MM-dd'" #payDate="ngModel"
+                name="payDate" (ngModelChange)="user.payDate = $event">
+        </div>
+
+    </div>
+
+
+
+
+    <div class="row form-group ">
+        <div class="btn-group">
+            <button type="button"
+                [disabled]="registerForm.invalid ||user.userType.id==0|| (user.lender.id==0 && user.userType.id==6) ||(user.userType.id==2 && user.manager.id==0)"
+                class="btn btn-primary " (click)="save()">שמור</button>
+            <button type="button" class="btn btn-danger" (click)="cancel()">ביטול</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-lg-center">
+            <a role="button" [routerLink]="'/account/login'">משתמש קיים? לדף הכניסה</a>
+        </div>
+    </div>
+
+</form>

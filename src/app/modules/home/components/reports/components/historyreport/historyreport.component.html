@@ -1,0 +1,60 @@
+
+        <div class="mrg">
+            
+            <table class="table">
+                <thead>
+                    <tr class="bg-green">
+                        <th>
+                            שנה
+                        </th>
+                        <th>
+                            חודש
+                        </th>
+                        <th>
+                            הכנסות
+                        </th>
+                        <th>
+                            הוצאות
+                        </th>
+                        <th class="widthSmall">
+                            יתרה
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <h5 *ngIf="histories.length==0">אין נתונים להצגה</h5>
+                    <tr *ngFor="let h of histories ">
+                          
+                        <td>
+                            
+                            {{h.year}}
+                        </td>
+                        <td>
+                            {{h.month}}
+                        </td>
+                        <td>
+                            {{h.revenues|number}}
+                        </td>
+                        <td>
+                            
+                            {{h.expenses|number}}
+                        </td>
+                        <td>
+                            {{h|balanceCalculation|number}}
+                        </td>
+                    </tr>
+                    
+                    <tr class="bg-green" >
+                        <td><h5>לסיכום</h5></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><h5>{{histories|total| number}}</h5></td>
+                    </tr>
+                    
+                </tbody>
+
+            </table>
+        </div>
+    

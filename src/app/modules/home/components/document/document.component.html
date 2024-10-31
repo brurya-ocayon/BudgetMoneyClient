@@ -1,0 +1,51 @@
+<h1 class="text-center">מסמכים</h1>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <app-upload (refresh)="getDocuments()"></app-upload>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <br>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-3">
+                        שם הקובץ
+                    </div>
+                    <div class="col-sm-3">
+                        תאור
+                    </div>
+                    <div class="col-sm-3">
+                        תצוגה מקדימה
+                    </div>
+                    <div class="col-sm-3">
+                        פעולות
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item" *ngFor="let d of docList">
+                <div class="row">
+                    <div class="col-sm-3">
+                        {{d.fileName}}
+                    </div>
+                    <div class="col-sm-3">
+                        {{d.description}}
+                    </div>
+                    <div class="col-sm-3">
+                        <img [src]="d.src" width="50">
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="btn btn-primary" [href]="d.src" target="_blank">הצג</a>
+                        <button class="btn btn-danger" (click)="deleteDocument(d.id)">הסר</button>
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

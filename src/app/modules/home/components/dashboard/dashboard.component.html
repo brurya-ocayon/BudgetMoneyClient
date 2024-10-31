@@ -1,0 +1,24 @@
+
+<div class="alert alert-danger" *ngIf="filters.payOptions==null||filters.areas==null||filters.payOptions.length==0 || filters.areas.length==0">
+     שימו לב! עדיין לא סיימתם את הגדרת אופני התשלום ותחומי ההכנסות וההוצאות שלכם! עליכם לעבור <a [routerLink]="'/home/settings'">לדף הגדרות</a>  על מנת למלא את הגדרותיכם!
+</div>
+<!-- 
+<div class="alert alert-danger"*ngIf="false">
+    שימו לב! תוקף התשלום החודשי שלכם עומד לפוג! על מנת למנוע עיכובים ואי נעימות העבירו את התשלום הבא בהקדם ותוכלו להמשיך להשתמש במערכת גם בחודש הבא.
+</div> -->
+<div class="row">
+
+    <div class="col-sm-12  col-lg-12">
+        <div class="card my-card">
+            <app-movings [filters]="filters"></app-movings>
+        </div>
+    </div>
+
+    <!-- <div class="col-sm-12  col-lg-6">
+        <div class="card my-card">
+            <app-movings [filters]="filters" [type]="2"></app-movings>
+        </div>
+    </div> -->
+
+
+</div>

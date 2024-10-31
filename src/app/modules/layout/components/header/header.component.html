@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="col-sm-1 ">
+    <a [routerLink]="'/home/move'">
+      <img src="assets\imgs\logo.jpg" width="120" style="border: solid 3px green;" /></a>
+  </div>
+  <div class="col-sm-3">
+    <a [routerLink]="'/home/move'">
+      <h1>תקציב לי</h1>
+    </a>
+    <a [routerLink]="'/home/move'">
+      <h3>המערכת שתסדר לכם את החיים!</h3>
+    </a>
+  </div>
+  <!-- <div class="col-sm-5"[ngClass]="{'col-sm-4':name!=null}"></div> -->
+  <div class="col-sm-2" > 
+    <div id="notActive" *ngIf="isNotActive">
+    משתמש הפך ל"לא פעיל". הנתונים שהזנתם נשמרו במערכת ותוכלו להמשיך להשתמש בהם לאחר העברת תשלום
+  </div>
+    </div> 
+  <div class="col-sm-6">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item ">
+              <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/homepage'">דף הבית </a>
+            </li> -->
+            <!-- *ngIf="name!=null" -->
+        <li class="nav-item "  >
+          <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/payment'">
+            לתשלום </a>
+        </li>
+        <li class="nav-item" *ngIf="isAthenticate">
+          <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/clock'">
+            שעון נוכחות </a>
+        </li>
+        <li class="nav-item " *ngIf="name!=null">
+          <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/move'">
+            תנועות </a>
+        </li>
+        <li class="nav-item " *ngIf="name!=null">
+          <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/settings'">
+            הגדרות </a>
+        </li>
+        <li class="nav-item " *ngIf="name!=null">
+          <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/debts'">
+            חובות </a>
+        </li>
+        <li class="nav-item " *ngIf="name!=null">
+          <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/tasks'">
+            משימות </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-link  btn-outline-secondary " [routerLinkActive]="'active'"
+            [routerLink]="'/home/help'">סרטון הדרכה</a>
+        </li>
+        <li class="nav-item " *ngIf="isAthenticate" >
+          <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/reports'">
+            דוחות</a>
+        </li>
+        
+        <!-- <li class="nav-item ">
+          <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/about'">
+            אודותינו </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="btn btn-link  btn-outline-secondary " [routerLinkActive]="'active'"
+            [routerLink]="'/home/contact'">צור קשר</a>
+        </li>
+        <li *ngIf="name!=null" class="nav-item">
+          <a class="btn btn-link  btn-outline-secondary " [routerLinkActive]="'active'"
+         [routerLink]="'/home/document'">מסמכים</a>
+        </li>
+       
+        <li class="nav-item dropdown">
+          <a class=" btn-link btn btn-outline-secondary navbar-brand dropdown-toggle" href="#" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            לאזור האישי
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="'/home/dashboard'">לאזור האישי</a>
+            <a class="dropdown-item" [routerLink]="'/account/login'">לדף כניסה</a>
+            <a *ngIf="isAthenticate" class="dropdown-item" [routerLink]="['/account/register',id]">עדכון פרטים</a>
+            <div class="dropdown-divider"  *ngIf="!isSimpleUser"></div>
+            <a class="dropdown-item" *ngIf="!isSimpleUser" [routerLink]="'/account/register'"> משתמש חדש? לרישום >></a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-link  btn-outline-secondary" (click)="logOut()">יציאה</a>
+          <div class="active" *ngIf="isAthenticate">שלום, {{name}}</div>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+
+</nav>

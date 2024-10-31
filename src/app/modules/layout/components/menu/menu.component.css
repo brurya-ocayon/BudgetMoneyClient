@@ -1,0 +1,16 @@
+/* a{
+    margin-right: 30px;
+} */
+a:hover{
+        color: rgb(55, 159, 243);
+}
+nav{
+    min-height: 500px;
+}
+li:hover{
+    background-color: rgb(240, 240, 240);
+
+}
+a span{
+    font-size: 14px;
+}
