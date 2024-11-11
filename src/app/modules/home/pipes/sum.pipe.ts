@@ -11,14 +11,10 @@ export class SumPipe implements PipeTransform {
       return null;
     }
     for (let i of value) {
-      if (i.sum != null) {
+      if (i.sum != null && i.isActive) {
         sum += i.sum;
       }
-      else {
-        if (i.isActive != false) {
-          sum += i.global;
-        }
-      }
+     
     }
     return sum;
   }
