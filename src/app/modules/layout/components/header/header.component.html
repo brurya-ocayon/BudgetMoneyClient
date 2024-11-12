@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="col-sm-1 ">
-    <a [routerLink]="'/home/move'">
+    <a [routerLink]="'/account/homepage'">
       <img src="assets\imgs\logo.jpg" width="120" style="border: solid 3px green;" /></a>
   </div>
   <div class="col-sm-3">
-    <a [routerLink]="'/home/move'">
+    <a [routerLink]="'/account/login'">
       <h1>תקציב לי</h1>
     </a>
     <a [routerLink]="'/home/move'">
@@ -24,6 +24,14 @@
               <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/homepage'">דף הבית </a>
             </li> -->
             <!-- *ngIf="name!=null" -->
+            <li class="nav-item">
+              <a class="btn btn-link  btn-outline-secondary " [routerLinkActive]="'active'"
+                [routerLink]="'/home/help'">עזרה</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-link  btn-outline-secondary " [routerLinkActive]="'active'"
+                [routerLink]="'/home/contact'">צור קשר</a>
+            </li>
         <li class="nav-item "  >
           <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/payment'">
             לתשלום </a>
@@ -48,10 +56,6 @@
           <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/tasks'">
             משימות </a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-link  btn-outline-secondary " [routerLinkActive]="'active'"
-            [routerLink]="'/home/help'">סרטון הדרכה</a>
-        </li>
         <li class="nav-item " *ngIf="isAthenticate" >
           <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/reports'">
             דוחות</a>
@@ -61,10 +65,7 @@
           <a class="btn btn-link btn-outline-secondary" [routerLinkActive]="'active'" [routerLink]="'/home/about'">
             אודותינו </a>
         </li> -->
-        <li class="nav-item">
-          <a class="btn btn-link  btn-outline-secondary " [routerLinkActive]="'active'"
-            [routerLink]="'/home/contact'">צור קשר</a>
-        </li>
+       
         <li *ngIf="name!=null" class="nav-item">
           <a class="btn btn-link  btn-outline-secondary " [routerLinkActive]="'active'"
          [routerLink]="'/home/document'">מסמכים</a>
@@ -77,7 +78,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="'/home/dashboard'">לאזור האישי</a>
-            <a class="dropdown-item" [routerLink]="'/account/login'">לדף כניסה</a>
+            <!-- //check -->
+            <a class="dropdown-item" [routerLink]="'/account/homepage'">לדף כניסה</a>
             <a *ngIf="isAthenticate" class="dropdown-item" [routerLink]="['/account/register',id]">עדכון פרטים</a>
             <div class="dropdown-divider"  *ngIf="!isSimpleUser"></div>
             <a class="dropdown-item" *ngIf="!isSimpleUser" [routerLink]="'/account/register'"> משתמש חדש? לרישום >></a>
