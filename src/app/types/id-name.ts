@@ -2,7 +2,7 @@ import { TableCode } from "./table-code";
 
 export class IdName {
     id: number;
-    name: string;
+    name: string="";
     inEdit: boolean = false;
     isActive?: boolean;
     type?:number;
