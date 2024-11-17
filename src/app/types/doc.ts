@@ -6,6 +6,7 @@ export class Doc {
     description:string;
     fileName:string;
     src:string;
+    inEdit:boolean=false;
 }
 
 
