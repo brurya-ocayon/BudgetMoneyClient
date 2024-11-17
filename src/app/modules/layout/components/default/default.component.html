@@ -1,10 +1,10 @@
 <app-header ></app-header>
 <br>
 <div class="row " id="my-body">
-    <div *ngIf="isManager||isLendersManager||isLender" class="col-sm-1">
+    <div *ngIf="isManager||isLendersManager||isLender" class="col-sm-2">
         <app-menu></app-menu>
     </div>
-    <div *ngIf="isManager||isLendersManager||isLender" class="col-sm-11">
+    <div *ngIf="isManager||isLendersManager||isLender" class="col-sm-10">
         <router-outlet></router-outlet>
     </div>
     
