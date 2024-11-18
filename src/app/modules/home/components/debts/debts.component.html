@@ -62,8 +62,8 @@
                             </div>
                             <div class="col-sm-2">
                                 <input class="form-control" type="number" required
-                                    [ngClass]="{'danger':newDebt.payments==null || newDebt.payments<1}"
-                                    [(ngModel)]="newDebt.payments" placeholder="תשלומים" min="1">
+                                    [ngClass]="{'danger':newDebt.payments==null || newDebt.payments<1  || newDebt.payments>1000}"
+                                 [(ngModel)]="newDebt.payments" placeholder="תשלומים"   min="1" max="1000">
                             </div>
                             <div class="col-sm-3">
                                 <input class="form-control" type="text" required [(ngModel)]="newDebt.description"
@@ -71,7 +71,7 @@
                             </div>
                             <div class="col-sm-2">
                                 <button class="btn btn-success"
-                                    [disabled]="((newDebt.urgency.id<1)|| (newDebt.sum==null || newDebt.sum<1) || (newDebt.payments==null || newDebt.payments<1))"
+                                    [disabled]="((newDebt.urgency.id<1)|| (newDebt.sum==null || newDebt.sum<1) || (newDebt.payments==null || newDebt.payments<1 || newDebt.payments>1000))"
                                     (click)="addDebt()">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-save" viewBox="0 0 16 16">
@@ -139,13 +139,13 @@
                                     <input type="number" class="form-control" min="1" required [ngClass]="{'danger': i.sum<1 || i.sum==null}" [(ngModel)]="i.sum" >
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="number" class="form-control" min="1" required [ngClass]="{'danger': i.payments<1 || i.payments==null}" [(ngModel)]="i.payments" >
+                                    <input type="number" class="form-control" min="1" max="1000" required [ngClass]="{'danger': i.payments<1 || i.payments==null ||  i.payments>1000}" [(ngModel)]="i.payments" >
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control" [(ngModel)]="i.description">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button class="btn btn-success" title="שמירה" [disabled]="(i.urgency.id==null) || (i.sum<1 || i.sum==null) || (i.payments<1 || i.payments==null)" (click)="save(i)">
+                                    <button class="btn btn-success" title="שמירה" [disabled]="(i.urgency.id==null) || (i.sum<1 || i.sum==null) || (i.payments<1 || i.payments==null ||  i.payments>1000)" (click)="save(i)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             class="bi bi-save" viewBox="0 0 16 16">
                                             <path 
