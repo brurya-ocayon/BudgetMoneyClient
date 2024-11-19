@@ -20,9 +20,6 @@
             <li class="list-group-item  ">
                 <div class="row">
                     <div class="col-sm-2">
-                        <b>מיון
-                            <input type="checkbox" [(ngModel)]="indexOn">
-                        </b>
                     </div>
                     <div class="col-sm-2">
                         <b>פעיל</b>
@@ -42,12 +39,7 @@
             </li>
             <li class="list-group-item" *ngIf="addMode==true">
                 <div class="row">
-                    <div class="col-sm-2" *ngIf="!indexOn">
-                    </div>
-                    <div class="col-sm-2" *ngIf="indexOn">
-                        <input class="form-control" type="number" required
-                            [ngClass]="{'danger':newArea.index<1 || newArea.index==null}" [(ngModel)]="newArea.index"
-                            placeholder="מיון" min="1">
+                    <div class="col-sm-2" >
                     </div>
                     <div class="col-sm-2">
                         <input type="checkbox" [(ngModel)]="newArea.isActive">פעיל
@@ -75,20 +67,9 @@
                             [ngClass]="{'danger':newArea.sum == null}" [(ngModel)]="newArea.sum" placeholder="...משוער">
                         <span class="text-danger" *ngIf="newArea.sum<0">הסכום קטן מ - 0</span>
                     </div>
-                    <div class="col-sm-2" *ngIf="!indexOn">
+                    <div class="col-sm-2" >
                         <button class="btn btn-success"
                             [disabled]="(newArea.description==null || newArea.description=='') || (newArea.sum == null ||  newArea.sum < 0)"
-                            (click)="addArea()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-save" viewBox="0 0 16 16">
-                                <path
-                                    d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="col-sm-2" *ngIf="indexOn">
-                        <button class="btn btn-success"
-                            [disabled]="(newArea.description==null || (newArea.description=='')) || (newArea.sum == null ||  newArea.sum < 0)||(newArea.index<1||newArea.index==null)"
                             (click)="addArea()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-save" viewBox="0 0 16 16">
@@ -105,11 +86,8 @@
             <ul class="list-group">
                 <!-- זמני - sortArr עד שנסדר בשרת -->
                 <li class="list-group-item" *ngFor="let i of areas">
-                    <div class="row" *ngIf="!i.inEdit">
-                        <div class="col-sm-2" *ngIf="!indexOn">
-                        </div>
-                        <div class="col-sm-2 checkbox" *ngIf="indexOn">
-                            {{i.index}}
+                    <div class="row" >
+                        <div class="col-sm-2" >
                         </div>
                         <div class="col-sm-2">
                             <div [ngClass]="{'text-danger':!i.isActive,'text-success':i.isActive}">
@@ -147,11 +125,7 @@
                         </div>
                     </div>
                     <div class="row" *ngIf="i.inEdit">
-                        <div class="col-sm-2" *ngIf="!indexOn">
-                        </div>
-                        <div class="col-sm-2" *ngIf="indexOn">
-                            <input type="number" class="form-control" min="1" required
-                                [ngClass]="{'danger':i.index<1 || i.index==null}" [(ngModel)]="i.index">
+                        <div class="col-sm-2">
                         </div>
                         <div class="col-sm-2">
                             <input type="checkbox" [(ngModel)]="i.isActive">
@@ -169,27 +143,7 @@
                                 [ngClass]="{'danger':i.sum==null}" [(ngModel)]="i.sum">
 
                         </div>
-                        <div class="col-sm-2 btn-group" style="margin-right: -14px;" *ngIf="indexOn">
-                            <button class="btn btn-success" title="שמירה"
-                                [disabled]="(i.description==null || i.description=='') || (i.sum == null ||  i.sum == '' ) || (i.index<1 || i.index==null)"
-                                (click)="save(i)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-save" viewBox="0 0 16 16">
-                                    <path
-                                        d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
-                                </svg>
-                            </button>
-                            <button class="btn btn-danger" title="ביטול" (click)="cancel(i)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
-                                    <path
-                                        d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="col-sm-2 btn-group" style="margin-right: -14px;" *ngIf="!indexOn">
+                       <div class="col-sm-2 btn-group" style="margin-right: -14px;" *ngIf="!indexOn">
                             <button class="btn btn-success" title="שמירה"
                                 [disabled]="(i.description==null || i.description=='') || (i.sum == null ||  i.sum == '' )"
                                 (click)="save(i)">
@@ -208,7 +162,7 @@
                                         d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
                                 </svg>
                             </button>
-                        </div>
+                        </div> 
                     </div>
                 </li>
             </ul>

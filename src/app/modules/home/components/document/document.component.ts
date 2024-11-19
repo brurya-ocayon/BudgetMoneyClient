@@ -69,13 +69,9 @@ export class DocumentComponent implements OnInit {
        })
     }
     cancel(d: Doc){
-      this.startDoc=d.description;
-      
-      d.description=this.startDoc;
        d.inEdit=false;
-       d.description=this.startDoc;
-       this.getDocuments;
-       d.description=this.startDoc;
+       this.getDocuments();
+      
     }
   }
 

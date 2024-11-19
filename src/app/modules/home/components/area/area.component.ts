@@ -52,7 +52,7 @@ export class AreaComponent implements OnInit {
   addArea() {
     this.newArea.type = this.type;
     this.newArea.isActive = true;
-    this.newArea.indexOn = this.indexOn;
+    
 
     this.http.post(this.root + '/AddArea', this.newArea).subscribe((res: Result) => {
       if (res.success) {
@@ -76,7 +76,6 @@ export class AreaComponent implements OnInit {
   save(sub: Area) {
     sub.type = this.type;
     sub.inEdit = false;
-    sub.indexOn = this.indexOn;
     this.http.put(this.root + '/UpdateArea', sub).subscribe((res: Result) => {
       if (res.success) {
         this.alert.success("תחום עודכן בהצלחה!")
