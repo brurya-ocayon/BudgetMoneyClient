@@ -1,2 +1,68 @@
-<p>tithereport works!</p>
 
+<div class="mrg"  >          
+    <table class="table">
+        <thead>
+            <tr class="bg-green">
+                <th>
+                    שנה
+                </th>
+                <th>
+                    חודש
+                </th>
+                <th>
+                    סך הכל הכנסות לחישוב מעשרות
+                </th>
+                <th>
+                    סך הכל הוצאות למעשרות
+                </th>
+                <th >
+                    סך הכל מעשר לחודש              
+                </th>
+                <th >
+                    כמה נשאר לך לעשר?
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <h5 *ngIf="tithes.length==0">אין נתונים להצגה</h5>
+            <tr *ngFor="let t of tithes ">
+                  
+                <td>
+                    
+                    {{t.year}}
+                </td>
+                <td>
+                    {{t.month}}
+                </td>
+                <td>
+                    {{t.revenuesToTithe}}
+                </td>
+                <td>
+                    
+                    {{t.expensesToTithe}}
+                </td>
+                <td>
+                    {{t|titheToMonth|number}}
+
+                </td>
+                <td>
+                    {{t|balanceToTithe|number}}
+
+                 </td>
+            </tr>
+            
+            <tr class="bg-green" >
+                <td><h5>לסיכום</h5></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><h5>{{tithes|balanceAllTithes|number}}</h5></td>
+            </tr>
+            
+        </tbody>
+
+    </table>
+</div>

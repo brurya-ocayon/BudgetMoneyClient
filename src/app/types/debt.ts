@@ -10,6 +10,7 @@ export class Debt {
     isActive: boolean = true;
     inEdit: boolean;
     constructor() {
+        this.payments=1;
         this.urgency = new IdName();
         this.urgency.id = 0;
     }

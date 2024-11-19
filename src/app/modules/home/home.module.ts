@@ -34,6 +34,9 @@ import { ConvertMsToTimePipe } from './pipes/convert-ms-to-time.pipe';
 import { DocumentComponent } from './components/document/document.component';
 import { TasksComponent } from './components/tasks/tasks/tasks.component';
 import { AreaComponent } from './components/area/area.component';
+import { TitheToMonthPipe } from './pipes/tithe-to-month.pipe';
+import { BalanceToTithePipe } from './pipes/balance-to-tithe.pipe';
+import { BalanceAllTithesPipe } from './pipes/balance-all-tithes.pipe';
 
 
 
@@ -70,7 +73,10 @@ import { AreaComponent } from './components/area/area.component';
     TotalTimeCalculationPipe,
      ConvertMsToTimePipe,
      TasksComponent,
-     AreaComponent
+     AreaComponent,
+     TitheToMonthPipe,
+     BalanceToTithePipe,
+     BalanceAllTithesPipe
   ],
   imports: [
     CommonModule,
