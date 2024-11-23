@@ -17,6 +17,7 @@ export class AdminSettingsComponent implements OnInit {
   citiesCode: TableCode = TableCode.cities;
   urgencyDebtCode: TableCode = TableCode.urgencyDebt;
   areaCode: TableCode = TableCode.areas;
+  // payOptionCode:TableCode=TableCode.payOption;
   lists: Lists = new Lists();
   root: string = environment.rootUrl + 'List';
   constructor(private http: HttpClient) { }

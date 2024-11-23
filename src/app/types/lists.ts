@@ -5,4 +5,5 @@ export class Lists {
     cities: IdName[];
     urgencyDebts: IdName[];
     areas:IdName[];
+    // payOption:IdName[];
 }
