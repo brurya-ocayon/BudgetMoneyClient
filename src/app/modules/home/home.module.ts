@@ -90,10 +90,13 @@ import { BalanceAllTithesPipe } from './pipes/balance-all-tithes.pipe';
       { path: 'about', component: AboutUsComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'payment', component: PaymentComponent },
-      { path: 'document', component: DocumentComponent,canActivate: [AuthGuard] },
+      // { path: 'document', component: DocumentComponent,canActivate: [AuthGuard] },
       { path: 'debts', component: DebtsComponent },
       { path: 'clock', component: TimeClockComponent, canActivate: [AuthGuard] },
       {path:'tasks', component:TasksComponent},
+      { path: 'document', component: DocumentComponent, canActivate: [AuthGuard] },
+
+      // { path: 'document/:id', component: DocumentComponent,canActivate: [AuthGuard] },
       {
         path: 'reports', component: ReportsComponent, canActivate: [AuthGuard],children: [
           {path:'',pathMatch: 'full',redirectTo:'historyreport'},
@@ -104,6 +107,8 @@ import { BalanceAllTithesPipe } from './pipes/balance-all-tithes.pipe';
           { path: 'incomereport', component: IncomeReportComponent },
         ]
       },
+
+        // { path: 'document/:id', component: DocumentComponent },
       { path: '', pathMatch: 'full', redirectTo: 'move' },
       { path: '**', pathMatch: 'full', redirectTo: 'move' }
     ])

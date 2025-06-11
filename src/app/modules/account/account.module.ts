@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
   declarations: [LoginComponent, ForgotPassComponent, IndexComponent, RegisterComponent],
   imports: [
     CommonModule,
-    InfraModule,
+    InfraModule,    
     RouterModule.forChild([
       { path: '', component: IndexComponent ,children:[
         { path: 'register', component: RegisterComponent },

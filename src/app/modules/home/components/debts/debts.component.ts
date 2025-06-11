@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/modules/account/services/auth.service';
 import { AlertService } from 'src/app/modules/infra/services/alert.service';
 import { Debt } from 'src/app/types/debt';
 import { IdName } from 'src/app/types/id-name';
@@ -17,7 +18,7 @@ export class DebtsComponent implements OnInit {
   root: string = environment.rootUrl + 'Debts';
   addMode: boolean = false;
   newDebt: Debt = new Debt();
-  constructor(private http: HttpClient, private alert: AlertService) { }
+  constructor(private http: HttpClient, private alert: AlertService,private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getDebts();
@@ -25,7 +26,8 @@ export class DebtsComponent implements OnInit {
   }
 
   getDebts() {
-    this.http.get(this.root + '/GetDebts').subscribe((res: GResult<Debt[]>) => {
+    
+    this.http.get(this.root + '/GetDebts',).subscribe((res: GResult<Debt[]>) => {
       this.debts = res.value;
     });
   }
@@ -51,9 +53,10 @@ export class DebtsComponent implements OnInit {
   }
 
   deleteDebt(id: number) {
+    
     this.alert.remove("האם אתה בטוח שאתה רוצה למחוק?").then((Result) => {
       if (Result.isConfirmed == true) {
-        this.http.delete(this.root + '/DeleteDebt/' + id).subscribe((res: Result) => {
+        this.http.delete(this.root + '/DeleteDebt/' + id ).subscribe((res: Result) => {
           if(res.success)
           {
             this.alert.success("החוב נמחק בהצלחה!");
@@ -91,6 +94,8 @@ export class DebtsComponent implements OnInit {
 
   cancel(debt:Debt)
   {
+  
+   if(!this.authService.isLender)
     debt.inEdit=false;
     this.getDebts();
   }

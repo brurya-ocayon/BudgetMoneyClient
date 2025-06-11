@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/modules/account/services/auth.service';
 import { AlertService } from 'src/app/modules/infra/services/alert.service';
+import { UserService } from 'src/app/modules/infra/services/user.service';
+import { Doc } from 'src/app/types/doc';
 import { IdName, IdNameDB } from 'src/app/types/id-name';
 import { LenderParams } from 'src/app/types/lender-params';
 import { GResult, Result } from 'src/app/types/result';
@@ -15,7 +18,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
+  docList: Doc[] = new Array<Doc>();
   users: User[];
   userToDelete: User=new User();;
   propToSort: string = "";
@@ -26,7 +29,7 @@ export class UsersComponent implements OnInit {
   changeOption: number = 1;
   lenderParams: LenderParams =new LenderParams();;
   lenders: IdName[] = new Array<IdName>();
-  constructor(private http: HttpClient, private alert: AlertService, private route: Router) { }
+  constructor(private http: HttpClient, private alert: AlertService, private route: Router,private authService: AuthService,private userService: UserService,) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -133,4 +136,19 @@ export class UsersComponent implements OnInit {
       this.lenders = res.value;
     });
   }
-}
+
+  // document(id: number): void {
+  //   this.userService.setUserId(id); // שמירת ה-ID בשירות
+  //   this.route.navigate(['home/document', id]); // ניווט ללא ה-ID ב-URL
+  // }
+  document(id: number): void {
+    this.userService.setUserId(id); // שמירת ה-ID בשירות
+    this.route.navigate(['home/document']); // ניווט ללא ID בכתובת ה-URL
+  }
+  
+  
+  }
+
+  
+  
+ 

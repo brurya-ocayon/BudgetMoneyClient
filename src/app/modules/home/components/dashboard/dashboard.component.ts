@@ -20,7 +20,5 @@ export class DashboardComponent implements OnInit {
     this.http.get(this.root + 'Movings/GetFilters').subscribe((res:GResult<Filters>) => {
       this.filters = res.value;
     });
-   
-   
   }
 }

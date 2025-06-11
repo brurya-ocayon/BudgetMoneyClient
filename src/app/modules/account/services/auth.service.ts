@@ -98,18 +98,25 @@ export class AuthService {
     return false;
   }
   public isLendersManager(){
-    let manager = this.getPermissionType();
-    if(manager==5){
+    let LendersManager = this.getPermissionType();
+    if(LendersManager==4){
       return true;
     }
     return false;
   }
   public isSimpleUser() {
     let simp = this.getPermissionType();
-    if (simp == 3 || simp == 6 || simp == 7) {
+    if (simp == 3 || simp == 5 || simp == 6) {
       return true;
     }
     return false;
+  }
+  public useUnderEscort(){
+    let useUnderEscort=this.getPermissionType();
+    if(useUnderEscort=5){
+      return true;
+    }
+     return false;    
   }
   public getUserId() {
     if (this.getTokenIfIsValid() != null) {

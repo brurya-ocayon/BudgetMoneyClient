@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/modules/infra/services/alert.service';
+import { FileService, FileType } from 'src/app/modules/infra/services/file.service';
 import { Filters } from 'src/app/types/filters';
 import { Moving } from 'src/app/types/moving';
 import { GResult, Result } from 'src/app/types/result';
@@ -21,8 +22,9 @@ export class MovingsComponent implements OnInit {
   root: string = environment.rootUrl;
   search: Search = new Search();
   title: string = "הכנסות והוצאות";
+  showAllUsers: boolean = false;
 
-  constructor(private http: HttpClient, private alert: AlertService) { }
+  constructor(private http: HttpClient, private alert: AlertService ,private PDFfile : FileService) { }
 
   ngOnInit(): void {
     this.newMove.userArea.type = 1;
@@ -140,5 +142,49 @@ export class MovingsComponent implements OnInit {
     this.search.from = new Date(year, month, 1, 16, 0, 0);
     this.search.to = new Date(year, month, lastDay, 16, 0, 0);
     this.getMovings();
+    
   }
+  downloadMovingsPDF() {
+  const userId = 1; // יש להכניס את מזהה המשתמש הנוכחי
+  this.http.get(this.root + 'pdf/DownloadMovingsPDF/' + userId, { responseType: 'blob' })
+
+    .subscribe((blob: Blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'MovingsReport.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      window.URL.revokeObjectURL(url);
+    });
 }
+
+  // downloadPDF() {
+  //   console.log("Downloading PDF...");
+  //     this.PDFfile.downlaodFile(
+  //     this.http,
+  //     this.root + "pdf" ,
+  //     this.showAllUsers,
+  //     FileType.pdf
+  //   );
+  // }
+  // downloadPDF() {
+  //   const url = `${this.root}api/pdf?showAllUsers=${this.showAllUsers}`;
+  //   this.http.post(url, {}, { responseType: 'blob' }).subscribe((blob) => {
+  //     const a = document.createElement('a');
+  //     const objectUrl = URL.createObjectURL(blob);
+  //     a.href = objectUrl;
+  //     a.download = 'movings.pdf';
+  //     a.click();
+  //     URL.revokeObjectURL(objectUrl);
+  //   }, error => {
+  //     this.alert.error("שגיאה בהורדת הקובץ");
+  //   });
+  // }
+  
+  
+  
+}
+
