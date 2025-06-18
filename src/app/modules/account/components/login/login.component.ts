@@ -28,17 +28,7 @@ export class LoginComponent implements OnInit {
       this.alert.error("משתמש לא פעיל");
     }
   }
-  // signIn() {
-  //   this.authService.signIn(this.loginUser).then((res: boolean) => {
-  //     if (res) {
-  //       this.route.navigate(['/home/move']);
-  //     }
-  //     else if (this.authService.isNotActive()) {
-  //       window.location.reload();
-
-  //     }
-  //   });
-  // }
+ 
   signIn() {
     this.authService.signIn(this.loginUser).then((res: boolean) => {
       if (res) {
@@ -83,3 +73,14 @@ export class LoginComponent implements OnInit {
   }
   
 }
+ // signIn() {
+  //   this.authService.signIn(this.loginUser).then((res: boolean) => {
+  //     if (res) {
+  //       this.route.navigate(['/home/move']);
+  //     }
+  //     else if (this.authService.isNotActive()) {
+  //       window.location.reload();
+
+  //     }
+  //   });
+  // }
