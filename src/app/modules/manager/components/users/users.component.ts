@@ -146,9 +146,10 @@ export class UsersComponent implements OnInit {
     this.route.navigate(['home/document']); // ניווט ללא ID בכתובת ה-URL
   }
   
-  
+ 
   }
 
+  
   
   
  

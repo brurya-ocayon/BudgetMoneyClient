@@ -161,15 +161,14 @@ export class MovingsComponent implements OnInit {
     });
 }
 
-  // downloadPDF() {
-  //   console.log("Downloading PDF...");
-  //     this.PDFfile.downlaodFile(
-  //     this.http,
-  //     this.root + "pdf" ,
-  //     this.showAllUsers,
-  //     FileType.pdf
-  //   );
-  // }
+  downloadPDF() {
+      this.PDFfile.downlaodFile(
+      this.http,
+      this.root + "pdf" ,
+      this.showAllUsers,
+      FileType.pdf
+    );
+  }
   // downloadPDF() {
   //   const url = `${this.root}api/pdf?showAllUsers=${this.showAllUsers}`;
   //   this.http.post(url, {}, { responseType: 'blob' }).subscribe((blob) => {

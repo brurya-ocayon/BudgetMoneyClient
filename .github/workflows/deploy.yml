@@ -3,14 +3,14 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2
+      - name: Deploy to EC2 using SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -19,8 +19,7 @@ jobs:
           script: |
             cd /home/ubuntu/BudgetMoneyClient
             git pull
-            npm install
+            npm install --legacy-peer-deps
             npm run build
             sudo rm -rf /var/www/html/*
             sudo cp -r dist/basicClient/* /var/www/html
-
